@@ -1,8 +1,9 @@
 "use client"
 import React, { useEffect } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { getDadosGithub, initialState, State } from './actions';
 import { useFormState } from 'react-dom';
+import { useRouter } from 'next/navigation';
 
 type Input = {
   user: string;
@@ -16,18 +17,21 @@ export default function Form() {
     formState: {errors}
   } = useForm<Input>();
 
+  const router = useRouter();
+
   const [state, formAction] = useFormState<State | string, FormData>(getDadosGithub, initialState);
   
   useEffect(() => {
-    if (typeof state === "string") setError("user", { message: state });
-  }, [setError, state])
+    if (typeof state === "string") return setError("user", { message: state });
+    if (!!state.login) router.push('/profile');
+  }, [setError, state, router])
   
   console.log('STATE ->', state);
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex items-center flex-grow justify-center w-full">
       <form
         action={formAction}
-        className="flex justify-center gap-5 w-3/5 h-40"
+        className="flex gap-5 w-3/5 h-40"
       >
         <div className="flex flex-col w-full h-15">
           <input
