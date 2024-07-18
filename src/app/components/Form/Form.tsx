@@ -1,9 +1,10 @@
 "use client"
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { getDadosGithub, initialState, State } from './actions';
+import { getDadosGithub, initialState } from './actions';
 import { useFormState } from 'react-dom';
 import { useRouter } from 'next/navigation';
+import { State } from '@/app/hooks/useProfile';
 
 type Input = {
   user: string;
