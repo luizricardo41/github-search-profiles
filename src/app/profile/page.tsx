@@ -34,6 +34,18 @@ export default function profile() {
           </div>
         </div>
       </section>
+      <section className='px-5'>
+        <p className='text-white text-base'>Bio se tiver</p>
+      </section>
+      <section className='p-5 gap-1 flex flex-col'>
+        <p className='text-sm text-white'>luiz@email.com</p>
+        <p className='text-sm text-white'>blog</p>
+        <div>
+          <span className='text-white text-sm font-bold'>35 </span> <span className='text-slate-500 text-sm'>followers</span>
+          <span className='text-white'> &middot; </span>
+          <span className='text-white text-sm font-bold'>58 </span> <span className='text-slate-500 text-sm'>following</span>
+        </div>
+      </section>
     </ProfileProvider>
   )
 }
