@@ -24,7 +24,7 @@ export default function Form() {
   
   useEffect(() => {
     if (typeof state === "string") return setError("user", { message: state });
-    // if (!!state.user.login) router.push({pathname: '/profile', query});
+    if (!!state.user.login) router.push('/profile');
   }, [setError, state, router])
   
   console.log('STATE ->', state);
